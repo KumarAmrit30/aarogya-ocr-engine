@@ -14,5 +14,10 @@ Schema version: `1.0`
 | GET | `/evaluation/reports` | Working — lists saved JSON reports |
 | GET | `/benchmarks` | Working — lists suite folders |
 | GET | `/models` | Placeholder empty list |
+| GET | `/datasets` | Working — catalog + search filters |
+| GET | `/datasets/{id}` | Working |
+| GET | `/datasets/{id}/versions/{version}` | Working — fingerprint, validation, quality, lineage, card |
+| GET | `/datasets/{id}/preview` | Working — sample metadata preview |
+| POST | `/datasets/pipeline/run` | Working — synthetic DefaultDatasetPipeline (no downloads) |
 
-Domain types: `aarogya_core.types`. Metrics: `aarogya_evaluation`.
+Domain types: `aarogya_core.types`. Metrics: `aarogya_evaluation`. Datasets: `aarogya_datasets`.

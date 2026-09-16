@@ -33,3 +33,15 @@ PipelineId = Annotated[
     StringConstraints(pattern=r"^PIPELINE-\d{5}$"),
     Field(description="Pipeline ID, e.g. PIPELINE-00001"),
 ]
+
+VersionId = Annotated[
+    str,
+    StringConstraints(pattern=r"^VERSION-\d{5}$"),
+    Field(description="Dataset version ID, e.g. VERSION-00001"),
+]
+
+SampleId = Annotated[
+    str,
+    StringConstraints(pattern=r"^SAMPLE-\d{5,}$"),
+    Field(description="Dataset sample ID, e.g. SAMPLE-00001"),
+]

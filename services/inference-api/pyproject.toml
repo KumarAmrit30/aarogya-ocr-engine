@@ -12,6 +12,7 @@ dependencies = [
   "aarogya-core",
   "aarogya-evaluation",
   "aarogya-benchmarks",
+  "aarogya-datasets",
   "fastapi>=0.115.0",
   "uvicorn[standard]>=0.32.0",
   "python-multipart>=0.0.17",
@@ -41,10 +42,22 @@ target-version = ["py311"]
 [tool.isort]
 profile = "black"
 line_length = 100
-known_first_party = ["aarogya_core", "aarogya_evaluation", "aarogya_benchmarks", "app"]
+known_first_party = [
+  "aarogya_core",
+  "aarogya_evaluation",
+  "aarogya_benchmarks",
+  "aarogya_datasets",
+  "app",
+]
 
 [tool.ruff.lint.isort]
-known-first-party = ["aarogya_core", "aarogya_evaluation", "aarogya_benchmarks", "app"]
+known-first-party = [
+  "aarogya_core",
+  "aarogya_evaluation",
+  "aarogya_benchmarks",
+  "aarogya_datasets",
+  "app",
+]
 
 
 [tool.ruff]

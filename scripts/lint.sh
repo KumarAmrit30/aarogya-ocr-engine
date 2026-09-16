@@ -11,5 +11,5 @@ if [[ -d .venv ]]; then
   source .venv/bin/activate
 fi
 
-echo "==> Ruff (core + inference-api)"
-ruff check core/aarogya_core services/inference-api/app
+echo "==> Ruff (core + datasets + inference-api)"
+ruff check core/aarogya_core datasets/aarogya_datasets services/inference-api/app

@@ -1,14 +1,13 @@
-# Datasets
+# Research Data Platform
 
-Data lake for the Aarogya AI Research Platform.
+Single source of truth for every dataset. Package: `aarogya_datasets`.
 
-| Path | Purpose |
-|------|---------|
-| `raw/` | Immutable source dumps (gitignored) |
-| `processed/` | Normalized training-ready data (gitignored) |
-| `manifests/` | Split / sample index files |
-| `cards/` | Human-readable dataset cards |
-| `licenses/` | License texts / attributions |
-| `registry.yaml` | **Authoritative catalog** (`DATASET-#####`) |
+```bash
+pip install -e "./datasets[dev]"
+```
 
-See `docs/Registry.md`.
+Orchestrator: `aarogya_datasets.pipeline.DefaultDatasetPipeline`.
+
+Evaluation consumes **only** `DatasetManifest` / `DatasetSample` — never loaders/validators.
+
+See `docs/DataPlatform.md`.

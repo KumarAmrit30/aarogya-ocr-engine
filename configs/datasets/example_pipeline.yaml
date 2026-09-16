@@ -1,0 +1,18 @@
+# Example DatasetPipeline config (synthetic — no downloads)
+
+pipeline: default
+
+source:
+  name: synthetic-demo
+  kind: synthetic
+
+config:
+  dataset_id: DATASET-00001
+  version: v1
+  name: synthetic-demo
+  task: HTR
+  domain: medical
+  language: [en]
+  license: research-only
+  tags: [synthetic, demo]
+  allow_failed_validation: false

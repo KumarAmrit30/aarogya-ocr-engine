@@ -26,21 +26,22 @@ jobs:
           pip install -e "./core[dev]"
           pip install -e "./evaluation[dev]"
           pip install -e "./benchmarks[dev]"
+          pip install -e "./datasets[dev]"
           pip install -e "./services/inference-api[dev]"
       - name: Ruff
-        run: ruff check core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks services/inference-api/app
+        run: ruff check core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks datasets/aarogya_datasets services/inference-api/app
       - name: Black
-        run: black --check core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks services/inference-api/app
+        run: black --check core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks datasets/aarogya_datasets services/inference-api/app
       - name: isort
         run: |
           isort --check-only --profile black \
             -p aarogya_core -p aarogya_evaluation \
-            -p aarogya_benchmarks -p app \
-            core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks services/inference-api/app
+            -p aarogya_benchmarks -p aarogya_datasets -p app \
+            core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks datasets/aarogya_datasets services/inference-api/app
       - name: mypy
         run: mypy core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks services/inference-api/app
       - name: pytest
-        run: pytest core/tests evaluation/tests benchmarks/tests services/inference-api/tests -q --cov=aarogya_evaluation --cov=aarogya_benchmarks --cov-report=term-missing
+        run: pytest core/tests evaluation/tests benchmarks/tests datasets/tests services/inference-api/tests -q --cov=aarogya_evaluation --cov=aarogya_benchmarks --cov=aarogya_datasets --cov-report=term-missing
 
   web:
     runs-on: ubuntu-latest

@@ -13,6 +13,7 @@ export default function RegistryPage() {
           <ul className="text-sm text-ink-muted space-y-1 font-mono">
             <li>EXP-##### — immutable experiment dirs</li>
             <li>DATASET-#####@vN — versioned datasets</li>
+            <li>VERSION-##### / SAMPLE-##### — version and sample IDs</li>
             <li>MODEL-##### — logical models</li>
             <li>ASSET-##### — checkpoints, tokenizers, exports…</li>
             <li>PIPELINE-##### — composed adapters (benchmark unit)</li>

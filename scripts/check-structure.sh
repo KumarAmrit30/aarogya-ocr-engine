@@ -10,6 +10,7 @@ REQUIRED=(
   core
   engines
   datasets
+  datasets/aarogya_datasets
   training
   evaluation
   evaluation/aarogya_evaluation

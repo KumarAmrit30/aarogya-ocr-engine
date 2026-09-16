@@ -11,6 +11,8 @@
 - Ruff + Black + isort + mypy (strict in `core`)
 - Protocols in `core/interfaces/`; implementations in `engines/`
 - No hardcoded absolute paths — use `aarogya_core.config`
+- **Evaluation independence:** `evaluation/` / `benchmarks/` must not import `aarogya_datasets` loaders, validators, quality, cards, or pipeline (manifest/sample types from `aarogya_core.types` only; optional `aarogya_datasets.exports`)
+- **Validation ≠ Quality:** never merge `validators` and `quality` packages
 
 ## Logging
 

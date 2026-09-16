@@ -90,3 +90,122 @@ class BenchmarkService:
 class ModelService:
     def list_models(self) -> list[object]:
         return []
+
+
+class DatasetService:
+    """Catalog search + synthetic DatasetPipeline demos."""
+
+    def list_datasets(self, query: object | None = None) -> list[object]:
+        from aarogya_core.config import get_settings
+        from aarogya_core.types.data_platform import DatasetSearchQuery
+        from aarogya_datasets.registry import load_catalog
+        from aarogya_datasets.search import filter_datasets
+
+        records = load_catalog(get_settings().repo_root())
+        if query is None:
+            return list(records)
+        assert isinstance(query, DatasetSearchQuery)
+        return list(filter_datasets(records, query))
+
+    def get_dataset(self, dataset_id: str) -> object:
+        from aarogya_core.config import get_settings
+        from aarogya_datasets.registry import load_catalog
+
+        for record in load_catalog(get_settings().repo_root()):
+            if record.dataset_id == dataset_id:
+                return record
+        raise KeyError(f"Dataset not found: {dataset_id}")
+
+    def get_version_detail(self, dataset_id: str, version: str) -> object:
+        import yaml
+
+        from aarogya_core.config import get_settings
+        from aarogya_core.types.data_platform import (
+            DatasetLineageGraph,
+            DatasetQualityReport,
+            DatasetStatistics,
+            DatasetValidationReport,
+        )
+        from app.schemas import DatasetVersionDetailResponse
+
+        record = self.get_dataset(dataset_id)
+        ver = record.get_version(version)  # type: ignore[union-attr]
+        root = get_settings().repo_root()
+        validation = quality = statistics = lineage = None
+        card_md = None
+        if ver.validation_path:
+            path = root / ver.validation_path
+            if path.exists():
+                validation = DatasetValidationReport.model_validate_json(
+                    path.read_text()
+                )
+        if ver.quality_path:
+            path = root / ver.quality_path
+            if path.exists():
+                quality = DatasetQualityReport.model_validate_json(path.read_text())
+        if ver.statistics_path:
+            path = root / ver.statistics_path
+            if path.exists():
+                statistics = DatasetStatistics.model_validate_json(path.read_text())
+        if ver.lineage_path:
+            path = root / ver.lineage_path
+            if path.exists():
+                lineage = DatasetLineageGraph.model_validate(
+                    yaml.safe_load(path.read_text()) or {}
+                )
+        if ver.card:
+            path = root / ver.card
+            if path.exists():
+                card_md = path.read_text(encoding="utf-8")
+        return DatasetVersionDetailResponse(
+            dataset=record,  # type: ignore[arg-type]
+            version=ver,
+            fingerprint=ver.fingerprint,
+            validation=validation,
+            quality=quality,
+            statistics=statistics,
+            lineage=lineage,
+            card_markdown=card_md,
+        )
+
+    def preview(
+        self, dataset_id: str, *, version: str | None = None, limit: int = 5
+    ) -> object:
+        import json
+
+        from aarogya_core.config import get_settings
+        from aarogya_core.types.data_platform import DatasetManifest
+        from aarogya_datasets.visualization import build_preview
+
+        record = self.get_dataset(dataset_id)
+        ver = record.get_version(version)  # type: ignore[union-attr]
+        root = get_settings().repo_root()
+        samples = []
+        if ver.manifest_path:
+            path = root / ver.manifest_path
+            if path.exists():
+                manifest = DatasetManifest.model_validate(json.loads(path.read_text()))
+                samples = list(manifest.samples)
+        return build_preview(dataset_id, samples, version=ver.version, limit=limit)  # type: ignore[arg-type]
+
+    def run_pipeline(self, request: object) -> object:
+        from aarogya_core.config import get_settings
+        from aarogya_core.types.data_platform import DatasetSource
+        from aarogya_datasets.pipeline import DefaultDatasetPipeline
+        from app.schemas import PipelineRunRequest
+
+        assert isinstance(request, PipelineRunRequest)
+        root = get_settings().repo_root()
+        config = {
+            "dataset_id": request.dataset_id,
+            "version": request.version,
+            "name": request.name,
+            "task": request.task,
+            "domain": request.domain,
+            "language": request.language,
+            "license": request.license,
+            "tags": request.tags,
+            **request.config,
+        }
+        source = DatasetSource(name=request.name, kind="synthetic")
+        return DefaultDatasetPipeline(root).run(source, config)

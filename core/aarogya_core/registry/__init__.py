@@ -20,6 +20,8 @@ ID_PATTERNS = {
     "MODEL": re.compile(r"^MODEL-(\d{5})$"),
     "ASSET": re.compile(r"^ASSET-(\d{5})$"),
     "PIPELINE": re.compile(r"^PIPELINE-(\d{5})$"),
+    "VERSION": re.compile(r"^VERSION-(\d{5})$"),
+    "SAMPLE": re.compile(r"^SAMPLE-(\d{5,})$"),
 }
 
 

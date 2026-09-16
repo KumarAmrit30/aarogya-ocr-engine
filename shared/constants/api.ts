@@ -11,6 +11,8 @@ export const API_ROUTES = {
   evaluationReports: `${API_V1_PREFIX}/evaluation/reports`,
   benchmarks: `${API_V1_PREFIX}/benchmarks`,
   models: `${API_V1_PREFIX}/models`,
+  datasets: `${API_V1_PREFIX}/datasets`,
+  datasetPipelineRun: `${API_V1_PREFIX}/datasets/pipeline/run`,
 } as const;
 
 export const SCHEMA_VERSION = "1.0" as const;

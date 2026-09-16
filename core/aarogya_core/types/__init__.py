@@ -2,7 +2,37 @@
 
 from aarogya_core.types.asset import AssetRecord
 from aarogya_core.types.common import SCHEMA_VERSION, BoundingBox, SchemaVersionMixin
-from aarogya_core.types.dataset import DatasetRecord, DatasetVersion
+from aarogya_core.types.data_platform import (
+    DatasetArtifact,
+    DatasetCard,
+    DatasetChecksum,
+    DatasetCollection,
+    DatasetEvent,
+    DatasetEventType,
+    DatasetFingerprint,
+    DatasetInspectionResult,
+    DatasetLicense,
+    DatasetLineageGraph,
+    DatasetManifest,
+    DatasetMetadata,
+    DatasetPreview,
+    DatasetQualityIssue,
+    DatasetQualityReport,
+    DatasetRecord,
+    DatasetSample,
+    DatasetSearchQuery,
+    DatasetSource,
+    DatasetSplit,
+    DatasetStatistics,
+    DatasetValidationIssue,
+    DatasetValidationReport,
+    DatasetVersion,
+    LineageEdge,
+    PIIMetadata,
+    PIIStatus,
+    PublishedVersionResult,
+    SampleProvenance,
+)
 from aarogya_core.types.evaluation import (
     BenchmarkRun,
     BenchmarkSuite,
@@ -16,21 +46,20 @@ from aarogya_core.types.evaluation import (
     Prediction,
     SampleEvaluation,
 )
-from aarogya_core.types.experiment import (
-    ConfigRef,
-    Experiment,
-    ExperimentArtifactLayout,
+from aarogya_core.types.experiment import ConfigRef, Experiment, ExperimentArtifactLayout
+from aarogya_core.types.ids import (
+    AssetId,
+    DatasetId,
+    ExperimentId,
+    ModelId,
+    PipelineId,
+    SampleId,
+    VersionId,
 )
-from aarogya_core.types.ids import AssetId, DatasetId, ExperimentId, ModelId, PipelineId
+from aarogya_core.types.media_asset import Asset
 from aarogya_core.types.metrics import Metrics
 from aarogya_core.types.model import ModelRecord
-from aarogya_core.types.ocr import (
-    OCRLine,
-    OCRRequest,
-    OCRResult,
-    OCRWord,
-    PipelineStatus,
-)
+from aarogya_core.types.ocr import OCRLine, OCRRequest, OCRResult, OCRWord, PipelineStatus
 from aarogya_core.types.pipeline import PipelineRecord, PipelineStep
 
 __all__ = [
@@ -42,6 +71,9 @@ __all__ = [
     "ModelId",
     "AssetId",
     "PipelineId",
+    "VersionId",
+    "SampleId",
+    "Asset",
     "OCRWord",
     "OCRLine",
     "OCRRequest",
@@ -53,6 +85,33 @@ __all__ = [
     "ConfigRef",
     "DatasetRecord",
     "DatasetVersion",
+    "DatasetSample",
+    "DatasetSplit",
+    "DatasetStatistics",
+    "DatasetManifest",
+    "DatasetCard",
+    "DatasetLicense",
+    "DatasetMetadata",
+    "DatasetQualityReport",
+    "DatasetQualityIssue",
+    "DatasetValidationReport",
+    "DatasetValidationIssue",
+    "DatasetInspectionResult",
+    "DatasetPreview",
+    "DatasetCollection",
+    "DatasetSource",
+    "DatasetArtifact",
+    "DatasetChecksum",
+    "PIIStatus",
+    "PIIMetadata",
+    "SampleProvenance",
+    "DatasetFingerprint",
+    "DatasetLineageGraph",
+    "LineageEdge",
+    "DatasetEvent",
+    "DatasetEventType",
+    "DatasetSearchQuery",
+    "PublishedVersionResult",
     "ModelRecord",
     "AssetRecord",
     "PipelineRecord",

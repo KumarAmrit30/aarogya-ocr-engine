@@ -34,7 +34,7 @@ Does this help us build a better model faster? If no — do not build it.
 |-------|------|
 | `core/` | Shared types, interfaces, pipelines, registry helpers |
 | `engines/` | Vendor/system adapters (Paddle, PARSeq, Qwen, …) |
-| `datasets/` + `registry/` | Data lake + stable IDs |
+| `datasets/` + `registry/` | Research Data Platform + stable IDs |
 | `benchmarks/` | Comparative suites |
 | `research/` + `lab/` | Memory + exploration sandbox |
 | `services/inference-api` | Thin HTTP edge |
@@ -52,6 +52,8 @@ Does this help us build a better model faster? If no — do not build it.
 - [Normalization](docs/Normalization.md)
 - [Failure analysis](docs/FailureAnalysis.md)
 - [Registry](docs/Registry.md)
+- [Data Platform](docs/DataPlatform.md)
+- [Dataset Pipeline](docs/DatasetPipeline.md)
 - [ADRs](docs/adr/README.md)
 - [Engines](docs/Engines.md)
 - [Lab guidelines](docs/Lab-Guidelines.md)

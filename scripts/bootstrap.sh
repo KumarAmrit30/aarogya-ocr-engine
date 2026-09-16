@@ -23,6 +23,9 @@ pip install -e "./evaluation[dev]"
 echo "==> Installing aarogya-benchmarks (editable)"
 pip install -e "./benchmarks[dev]"
 
+echo "==> Installing aarogya-datasets (editable)"
+pip install -e "./datasets[dev]"
+
 echo "==> Installing inference-api (editable)"
 pip install -e "./services/inference-api[dev]"
 

@@ -30,9 +30,10 @@ typecheck:
 	./scripts/typecheck.sh
 
 test:
-	cd services/inference-api && python -m pytest -q
+	pytest datasets/tests services/inference-api/tests -q
 
 format:
 	pnpm format
 	cd core && python -m black aarogya_core && python -m isort aarogya_core
+	cd datasets && python -m black aarogya_datasets tests && python -m isort aarogya_datasets tests
 	cd services/inference-api && python -m black app tests && python -m isort app tests

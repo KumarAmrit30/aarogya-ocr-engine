@@ -36,3 +36,6 @@ ADRs capture **why** a decision was made—not how to implement it.
 | 0004 | Experiments are immutable |
 | 0005 | CER is the primary metric |
 | 0006 | Assets registry separate from models |
+| 0007 | Evaluation stays independent of the Data Platform |
+| 0008 | Validation is not Quality |
+| 0009 | Dataset ingest is pipeline-orchestrated |

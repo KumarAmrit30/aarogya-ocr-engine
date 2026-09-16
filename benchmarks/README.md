@@ -1,16 +1,7 @@
 # Benchmarks
 
-First-class comparative evaluation across engines.
+First-class comparative evaluation across **pipelines**.
 
-**Evaluation** (`evaluation/`) = metrics for one run.
-**Benchmarks** (this tree) = suites comparing engines (Paddle vs PARSeq vs TrOCR vs Qwen, …).
+Install: `pip install -e "./benchmarks[dev]"`
 
-| Suite | Focus |
-|-------|-------|
-| `handwritten/` | Handwriting / prescription HTR |
-| `printed/` | Printed documents |
-| `mixed/` | Mixed print + handwriting |
-| `robustness/` | Noise, blur, rotation, compression |
-| `latency/` | Throughput / latency |
-
-Runner interface: `aarogya_core.interfaces.BenchmarkRunner`.
+Package: `aarogya_benchmarks` — see `docs/Benchmarking.md`.

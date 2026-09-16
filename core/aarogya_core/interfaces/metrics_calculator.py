@@ -11,5 +11,4 @@ from aarogya_core.types.metrics import Metrics
 class MetricsCalculator(Protocol):
     """Compute named metrics from predictions and references."""
 
-    def calculate(self, predictions: Any, references: Any) -> Metrics:
-        ...
+    def calculate(self, predictions: Any, references: Any) -> Metrics: ...

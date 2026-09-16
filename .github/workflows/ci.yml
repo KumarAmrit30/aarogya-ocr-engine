@@ -24,18 +24,23 @@ jobs:
         run: |
           python -m pip install -U pip
           pip install -e "./core[dev]"
+          pip install -e "./evaluation[dev]"
+          pip install -e "./benchmarks[dev]"
           pip install -e "./services/inference-api[dev]"
       - name: Ruff
-        run: ruff check core/aarogya_core services/inference-api/app
+        run: ruff check core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks services/inference-api/app
       - name: Black
-        run: black --check core/aarogya_core services/inference-api/app
+        run: black --check core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks services/inference-api/app
       - name: isort
-        run: isort --check-only core/aarogya_core services/inference-api/app
+        run: |
+          isort --check-only --profile black \
+            -p aarogya_core -p aarogya_evaluation \
+            -p aarogya_benchmarks -p app \
+            core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks services/inference-api/app
       - name: mypy
-        run: mypy core/aarogya_core services/inference-api/app
+        run: mypy core/aarogya_core evaluation/aarogya_evaluation benchmarks/aarogya_benchmarks services/inference-api/app
       - name: pytest
-        working-directory: services/inference-api
-        run: pytest -q
+        run: pytest core/tests evaluation/tests benchmarks/tests services/inference-api/tests -q --cov=aarogya_evaluation --cov=aarogya_benchmarks --cov-report=term-missing
 
   web:
     runs-on: ubuntu-latest

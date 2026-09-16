@@ -17,6 +17,12 @@ source .venv/bin/activate
 echo "==> Installing aarogya-core (editable)"
 pip install -e "./core[dev]"
 
+echo "==> Installing aarogya-evaluation (editable)"
+pip install -e "./evaluation[dev]"
+
+echo "==> Installing aarogya-benchmarks (editable)"
+pip install -e "./benchmarks[dev]"
+
 echo "==> Installing inference-api (editable)"
 pip install -e "./services/inference-api[dev]"
 

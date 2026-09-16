@@ -8,6 +8,8 @@ export const API_ROUTES = {
   ocr: `${API_V1_PREFIX}/ocr`,
   train: `${API_V1_PREFIX}/train`,
   evaluate: `${API_V1_PREFIX}/evaluate`,
+  evaluationReports: `${API_V1_PREFIX}/evaluation/reports`,
+  benchmarks: `${API_V1_PREFIX}/benchmarks`,
   models: `${API_V1_PREFIX}/models`,
 } as const;
 

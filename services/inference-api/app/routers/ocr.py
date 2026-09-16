@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from aarogya_core.types.ocr import OCRRequest, OCRResult
 from fastapi import APIRouter
 
+from aarogya_core.types.ocr import OCRRequest, OCRResult
 from app.services import OCRService
 
 router = APIRouter()

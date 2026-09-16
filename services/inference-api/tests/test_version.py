@@ -1,4 +1,4 @@
-"""Version and placeholder endpoint tests."""
+"""Version and evaluation endpoint tests."""
 
 from fastapi.testclient import TestClient
 
@@ -28,10 +28,31 @@ def test_train_placeholder() -> None:
     assert response.json()["status"] == "not_implemented"
 
 
-def test_evaluate_placeholder() -> None:
-    response = client.post("/api/v1/evaluate", json={})
+def test_evaluate_engine() -> None:
+    response = client.post(
+        "/api/v1/evaluate",
+        json={
+            "references": [{"sample_id": "1", "text": "hello"}],
+            "predictions": [{"sample_id": "1", "text": "hello"}],
+            "config": {"metrics": ["cer", "exact_match"], "primary_metric": "cer"},
+        },
+    )
     assert response.status_code == 200
-    assert response.json()["status"] == "not_implemented"
+    body = response.json()
+    assert body["summary"]["sample_count"] == 1
+    assert body["summary"]["metrics"]["cer"] == 0.0
+
+
+def test_evaluation_reports_list() -> None:
+    response = client.get("/api/v1/evaluation/reports")
+    assert response.status_code == 200
+    assert "reports" in response.json()
+
+
+def test_benchmarks_list() -> None:
+    response = client.get("/api/v1/benchmarks")
+    assert response.status_code == 200
+    assert "suites" in response.json()
 
 
 def test_models_empty() -> None:

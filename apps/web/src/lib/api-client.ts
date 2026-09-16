@@ -1,10 +1,13 @@
 import {
   API_ROUTES,
+  type BenchmarkListResponse,
+  type EvaluationReport,
   type HealthResponse,
   type ModelListResponse,
   type OCRRequest,
   type OCRResult,
   type PlaceholderResponse,
+  type ReportListResponse,
   type VersionResponse,
 } from "@aarogya/shared";
 
@@ -44,10 +47,12 @@ export const apiClient = {
       method: "POST",
       body: JSON.stringify(body),
     }),
-  evaluate: (body: Record<string, unknown> = {}) =>
-    request<PlaceholderResponse>(API_ROUTES.evaluate, {
+  evaluate: (body: Record<string, unknown>) =>
+    request<EvaluationReport>(API_ROUTES.evaluate, {
       method: "POST",
       body: JSON.stringify(body),
     }),
+  evaluationReports: () => request<ReportListResponse>(API_ROUTES.evaluationReports),
+  benchmarks: () => request<BenchmarkListResponse>(API_ROUTES.benchmarks),
   models: () => request<ModelListResponse>(API_ROUTES.models),
 };

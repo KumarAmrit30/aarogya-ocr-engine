@@ -21,3 +21,15 @@ ModelId = Annotated[
     StringConstraints(pattern=r"^MODEL-\d{5}$"),
     Field(description="Model ID, e.g. MODEL-00001"),
 ]
+
+AssetId = Annotated[
+    str,
+    StringConstraints(pattern=r"^ASSET-\d{5}$"),
+    Field(description="Asset ID, e.g. ASSET-00001"),
+]
+
+PipelineId = Annotated[
+    str,
+    StringConstraints(pattern=r"^PIPELINE-\d{5}$"),
+    Field(description="Pipeline ID, e.g. PIPELINE-00001"),
+]

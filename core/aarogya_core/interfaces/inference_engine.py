@@ -13,5 +13,4 @@ class InferenceEngine(Protocol):
 
     engine_id: str
 
-    def build_pipeline(self, config_ref: str | None = None) -> Pipeline:
-        ...
+    def build_pipeline(self, config_ref: str | None = None) -> Pipeline: ...

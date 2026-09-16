@@ -11,5 +11,4 @@ from aarogya_core.types.experiment import Experiment
 class ExperimentRunner(Protocol):
     """Orchestrate train/eval for a registered experiment."""
 
-    def run(self, experiment: Experiment) -> Experiment:
-        ...
+    def run(self, experiment: Experiment) -> Experiment: ...

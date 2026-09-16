@@ -11,5 +11,4 @@ class TableExtractor(Protocol):
 
     engine_id: str
 
-    def extract_tables(self, image: Any) -> list[dict[str, Any]]:
-        ...
+    def extract_tables(self, image: Any) -> list[dict[str, Any]]: ...

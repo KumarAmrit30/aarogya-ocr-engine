@@ -13,5 +13,4 @@ class ReadingOrder(Protocol):
 
     engine_id: str
 
-    def order(self, lines: list[OCRLine]) -> list[OCRLine]:
-        ...
+    def order(self, lines: list[OCRLine]) -> list[OCRLine]: ...

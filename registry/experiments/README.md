@@ -1,6 +1,16 @@
-# Experiment registry records
+# Experiment registry (immutable)
 
-Place one YAML file per experiment: `EXP-00001.yaml`.
+**Never edit an allocated `EXP-#####`.** Reruns create a new ID.
 
-Artifact convention: `registry/experiments/EXP-00001/artifacts/` (gitignored).
-Link research notes under `research/` when abandoning or concluding a line of work.
+```text
+registry/experiments/EXP-00015/
+  EXP-00015.yaml   # frozen metadata
+  config/          # snapshotted config
+  results/         # metrics JSON
+  report/          # EvaluationReport exports
+  artifacts/       # gitignored blobs
+```
+
+Use `aarogya_core.registry.write_experiment` — it refuses overwrite.
+
+See `docs/adr/ADR-0004-experiments-are-immutable.md`.

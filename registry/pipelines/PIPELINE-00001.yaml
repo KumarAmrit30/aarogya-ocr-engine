@@ -1,0 +1,10 @@
+# Example pipeline composition (not wired to engines yet)
+schema_version: "1.0"
+pipeline_id: PIPELINE-00001
+name: stub-passthrough
+description: Placeholder pipeline for evaluation framework tests
+steps:
+  - role: recognizer
+    engine_id: stub
+    config_ref: configs/engines/stub.yaml
+asset_ids: []

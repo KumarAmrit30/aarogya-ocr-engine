@@ -11,5 +11,6 @@ from aarogya_core.types.ids import ExperimentId
 class TrainingRunner(Protocol):
     """Run a training job from config."""
 
-    def train(self, config: dict[str, Any], experiment_id: ExperimentId) -> dict[str, Any]:
-        ...
+    def train(
+        self, config: dict[str, Any], experiment_id: ExperimentId
+    ) -> dict[str, Any]: ...

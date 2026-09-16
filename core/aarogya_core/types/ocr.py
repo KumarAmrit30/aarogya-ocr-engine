@@ -36,7 +36,9 @@ class OCRLine(BaseModel):
 class OCRRequest(SchemaVersionMixin):
     """Input for an OCR / HTR pipeline."""
 
-    image_path: str | None = Field(default=None, description="Path relative to repo or absolute")
+    image_path: str | None = Field(
+        default=None, description="Path relative to repo or absolute"
+    )
     image_base64: str | None = None
     engine_id: str | None = Field(default=None, description="e.g. paddle, qwen")
     config_ref: str | None = Field(default=None, description="Path under configs/")

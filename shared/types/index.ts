@@ -4,4 +4,5 @@ export * from "./metrics";
 export * from "./experiment";
 export * from "./dataset";
 export * from "./model";
+export * from "./evaluation";
 export * from "./api";

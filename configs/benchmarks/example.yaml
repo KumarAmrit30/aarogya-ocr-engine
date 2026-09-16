@@ -1,4 +1,7 @@
-# Example benchmark config — not wired yet
+# Benchmark config — pipelines × dataset version (no engines invoked here)
 suite: handwritten
-engines: [stub]
-dataset_ids: []
+dataset_id: DATASET-00001
+dataset_version: v1
+metrics: [cer, wer, exact_match]
+primary_metric: cer
+# pipeline_sets supplied at runtime with precomputed predictions

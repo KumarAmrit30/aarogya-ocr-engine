@@ -16,7 +16,9 @@ PIPELINE_FACTORIES: dict[str, Callable[[dict[str, Any]], BasePipeline]] = {
 }
 
 
-def register_pipeline_factory(name: str, factory: Callable[[dict[str, Any]], BasePipeline]) -> None:
+def register_pipeline_factory(
+    name: str, factory: Callable[[dict[str, Any]], BasePipeline]
+) -> None:
     PIPELINE_FACTORIES[name] = factory
 
 

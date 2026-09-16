@@ -52,6 +52,26 @@ datasets/processed/**
 weights/
 checkpoints/
 
+# Assets blobs (keep dirs + registry.yaml)
+assets/checkpoints/**
+!assets/checkpoints/.gitkeep
+!assets/checkpoints/README.md
+assets/tokenizers/**
+!assets/tokenizers/.gitkeep
+!assets/tokenizers/README.md
+assets/vocabularies/**
+!assets/vocabularies/.gitkeep
+!assets/vocabularies/README.md
+assets/lexicons/**
+!assets/lexicons/.gitkeep
+!assets/lexicons/README.md
+assets/weights/**
+!assets/weights/.gitkeep
+!assets/weights/README.md
+assets/exports/**
+!assets/exports/.gitkeep
+!assets/exports/README.md
+
 # Lab scratch (keep README)
 lab/scratch/**
 !lab/scratch/.gitkeep
@@ -62,6 +82,8 @@ lab/playground/**
 
 # Experiment / benchmark large outputs
 registry/experiments/**/artifacts/
+registry/experiments/**/results/
+registry/experiments/**/report/
 benchmarks/**/results/
 evaluation/reports/**
 !evaluation/reports/.gitkeep

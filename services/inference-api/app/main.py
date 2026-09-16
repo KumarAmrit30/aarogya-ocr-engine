@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from aarogya_core.logging import configure_logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from aarogya_core.logging import configure_logging
 from app.config.settings import get_settings
 from app.middleware import RequestIdMiddleware
-from app.routers import evaluate, health, models, ocr, train, version
+from app.routers import benchmarks, evaluate, health, models, ocr, train, version
 
 settings = get_settings()
 configure_logging(level=settings.log_level, json_logs=settings.app_env != "development")
@@ -34,4 +34,5 @@ app.include_router(version.router, prefix=API_PREFIX, tags=["version"])
 app.include_router(ocr.router, prefix=API_PREFIX, tags=["ocr"])
 app.include_router(train.router, prefix=API_PREFIX, tags=["train"])
 app.include_router(evaluate.router, prefix=API_PREFIX, tags=["evaluate"])
+app.include_router(benchmarks.router, prefix=API_PREFIX, tags=["benchmarks"])
 app.include_router(models.router, prefix=API_PREFIX, tags=["models"])

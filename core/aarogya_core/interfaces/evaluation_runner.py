@@ -12,5 +12,4 @@ from aarogya_core.types.metrics import Metrics
 class EvaluationRunner(Protocol):
     """Run evaluation for a model/dataset pair."""
 
-    def run(self, config: dict[str, Any], experiment_id: ExperimentId) -> Metrics:
-        ...
+    def run(self, config: dict[str, Any], experiment_id: ExperimentId) -> Metrics: ...

@@ -10,6 +10,7 @@ from aarogya_core.interfaces.experiment_runner import ExperimentRunner
 from aarogya_core.interfaces.inference_engine import InferenceEngine
 from aarogya_core.interfaces.layout import LayoutAnalyzer
 from aarogya_core.interfaces.medical_parser import MedicalParser
+from aarogya_core.interfaces.metric import Metric
 from aarogya_core.interfaces.metrics_calculator import MetricsCalculator
 from aarogya_core.interfaces.model_registry import ModelRegistry
 from aarogya_core.interfaces.pipeline import Pipeline
@@ -32,6 +33,7 @@ __all__ = [
     "VisionLanguageModel",
     "MedicalParser",
     "Pipeline",
+    "Metric",
     "Evaluator",
     "DatasetLoader",
     "TrainingRunner",

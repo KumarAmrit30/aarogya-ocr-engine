@@ -5,11 +5,15 @@ export default function ExperimentsPage() {
     <div>
       <PageHeader
         title="Experiments"
-        description="Experiment history from registry/experiments (EXP-#####)."
+        description="Immutable EXP-##### records under registry/experiments/. Never overwrite — allocate a new ID to rerun."
       />
+      <Panel className="mb-4 text-sm text-ink-muted">
+        Layout: <code>EXP-#####.yaml</code>, <code>config/</code>, <code>results/</code>,{" "}
+        <code>report/</code>, <code>artifacts/</code>. See ADR-0004.
+      </Panel>
       <Panel>
         <EmptyTable
-          columns={["experiment_id", "name", "status", "engine_id"]}
+          columns={["experiment_id", "name", "status", "pipeline_id", "dataset_version"]}
           message="No experiments registered yet."
         />
       </Panel>

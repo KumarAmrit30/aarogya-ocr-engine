@@ -1,0 +1,12 @@
+# Asset Registry
+schema_version: "1.0"
+assets: []
+
+# Example:
+# assets:
+#   - asset_id: ASSET-00001
+#     name: example-tokenizer
+#     kind: tokenizer
+#     path: assets/tokenizers/ASSET-00001
+#     model_id: null
+#     notes: ""

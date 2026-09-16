@@ -11,5 +11,4 @@ class VisionLanguageModel(Protocol):
 
     engine_id: str
 
-    def generate(self, image: Any, prompt: str, **kwargs: Any) -> str:
-        ...
+    def generate(self, image: Any, prompt: str, **kwargs: Any) -> str: ...

@@ -2,26 +2,28 @@
 
 ## ID scheme
 
-| Entity | Pattern | Catalog |
-|--------|---------|---------|
-| Experiment | `EXP-#####` | `registry/experiments/` |
-| Dataset | `DATASET-#####` | **`datasets/registry.yaml`** (authoritative) |
+| Entity | Pattern | Location |
+|--------|---------|----------|
+| Experiment | `EXP-#####` | `registry/experiments/EXP-#####/` (**immutable**) |
+| Dataset | `DATASET-#####` | `datasets/registry.yaml` (+ versions `v1`…) |
 | Model | `MODEL-#####` | `registry/models/` |
+| Asset | `ASSET-#####` | `assets/registry.yaml` |
+| Pipeline | `PIPELINE-#####` | `registry/pipelines/` |
 
-Allocate with:
+Allocate: `aarogya_core.registry.next_id`.
 
-```python
-from aarogya_core.registry import next_id, list_registry_ids
-from pathlib import Path
+## Dataset versions
 
-ids = list_registry_ids(Path("registry/experiments"), "EXP")
-print(next_id("EXP", ids))
-```
+`Dataset → Version → Split`. Evaluation cites `dataset_id` + `dataset_version`.
 
-## Dataset fields
+## Assets vs models
 
-`dataset_id`, `name`, `version`, `license`, `language`, `writer_count`, `source`, `quality`, `split`, `path`, `card`
+Logical model (`MODEL`) ≠ files on disk (`ASSET`: checkpoints, tokenizers, ONNX, …).
 
-## Avoid duplication
+## Pipelines
 
-Do not copy full dataset metadata into `registry/datasets/`. Optional index files may point at `datasets/registry.yaml` only.
+Benchmark compositions of adapters. See ADR-0002.
+
+## Immutable experiments
+
+`write_experiment` refuses overwrite. Rerun → new `EXP-#####`. See ADR-0004.

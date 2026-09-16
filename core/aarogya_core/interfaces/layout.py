@@ -11,5 +11,4 @@ class LayoutAnalyzer(Protocol):
 
     engine_id: str
 
-    def analyze(self, image: Any) -> dict[str, Any]:
-        ...
+    def analyze(self, image: Any) -> dict[str, Any]: ...

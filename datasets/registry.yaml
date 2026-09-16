@@ -1,26 +1,29 @@
 # Dataset Registry
 #
 # datasets/registry.yaml is the authoritative dataset catalog.
-# registry/datasets/ holds optional per-id index files (avoid duplicating full metadata).
+# Identity: Dataset (DATASET-#####) → Version (v1..) → Split
 #
 # schema_version: "1.0"
 
 schema_version: "1.0"
 datasets: []
 
-# Example (commented):
+# Example:
 # datasets:
 #   - dataset_id: DATASET-00001
 #     name: example-handwritten-rx
-#     version: "0.1.0"
 #     license: proprietary
 #     language: [en, hi]
 #     writer_count: 0
 #     source: internal
 #     quality: unknown
-#     split:
-#       train: 0.8
-#       val: 0.1
-#       test: 0.1
-#     path: datasets/raw/DATASET-00001
-#     card: datasets/cards/DATASET-00001.md
+#     versions:
+#       - version: v1
+#         path: datasets/raw/DATASET-00001/v1
+#         card: datasets/cards/DATASET-00001-v1.md
+#         split: {train: 0.8, val: 0.1, test: 0.1}
+#         change_notes: initial release
+#       - version: v2
+#         path: datasets/raw/DATASET-00001/v2
+#         parent_version: v1
+#         change_notes: OCR labels fixed

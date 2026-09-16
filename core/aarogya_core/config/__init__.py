@@ -57,7 +57,9 @@ def get_settings() -> CoreSettings:
     return CoreSettings()
 
 
-def resolve_repo_path(relative: str | Path, settings: CoreSettings | None = None) -> Path:
+def resolve_repo_path(
+    relative: str | Path, settings: CoreSettings | None = None
+) -> Path:
     """Resolve a path relative to the repo root. Rejects empty paths."""
     settings = settings or get_settings()
     path = Path(relative)

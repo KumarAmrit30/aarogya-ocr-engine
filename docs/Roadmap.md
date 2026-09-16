@@ -1,31 +1,41 @@
 # Roadmap
 
-## Done (foundation)
+## Done — Phase 1 (Foundation)
 
-- Research Core package + Pipeline stub
-- Engine adapter skeletons
-- Dataset + experiment/model registries
-- Benchmarks / research / lab layout
-- FastAPI edge + Next.js research console
-- Docker, CI, docs
+- Research Core, engines stubs, registries, lab/research, API, web console, Docker/CI/docs
 
-## Next (research velocity)
+## Done — Phase 2 (Research Evaluation Engine)
 
-1. Dataset loaders + first `DATASET-#####`
-2. Wire one engine (likely Paddle) behind interfaces
-3. Evaluation metrics (CER/WER) + first eval runner
-4. Benchmark suite `handwritten/` comparing stub → real engines
-5. OpenAPI → TypeScript codegen (retire manual Zod mirror drift)
-6. Experiment runner writing `EXP-#####` records + artifact dirs
+- Evaluation domain types + Metric Protocol
+- Pluggable metrics (CER/WER/…) + placeholders
+- Normalization (RAW/STANDARD/MEDICAL stub)
+- EvaluationEngine, failure analysis, report exporters
+- Benchmarks keyed by pipeline × dataset version
+- Assets registry, pipeline registry, dataset versions, immutable experiments
+- ADRs 0001–0006
+- API `/evaluate`, `/evaluation/reports`, `/benchmarks` + UI wiring
+
+## Phase 3 (next)
+
+1. Dataset loaders for `DATASET-#####@vN`
+2. First real engine adapter emitting `Prediction`s
+3. Register a real `PIPELINE-#####` and run handwritten suite
+4. OpenAPI → TypeScript codegen
+5. MEDICAL normalization + medicine field metrics
 
 ## Later
 
-- PARSeq / TrOCR / Qwen2.5-VL / Florence / Document AI adapters
-- Distributed training, multi-GPU workers (`gpu-worker` profile)
-- MLflow / W&B optional sinks (keep registry IDs primary)
-- Medical IE parsers
-- Cloud deployment (no architectural rewrite required)
+Distributed benches, MLflow/W&B sinks, cloud deploy, Document AI baseline studies (with ADRs).
 
-## Explicitly out of scope until needed
+## Phase 2 self-review
 
-Auth/SSO, Kubernetes, fake seed OCR data, customer-facing UI.
+1. Model-agnostic? **Yes**
+2. Engines plug in without eval changes? **Yes**
+3. New metrics without evaluator edits? **Yes** (`@register_metric`)
+4. Medical metrics later? **Placeholders + MEDICAL mode ready**
+5. Scale to hundreds of experiments? **Immutable EXP dirs + IDs**
+6. Duplication? **Avoided** (metrics only in evaluation/)
+7. Over-engineered? **No ML deps; sequential benches**
+8. Three-year fit? **Pipelines + versions + ADRs**
+9. Debt: MEDICAL empty; TS mirror drift; no parallel benches yet
+10. Phase 3: loaders + first pipeline with real engines

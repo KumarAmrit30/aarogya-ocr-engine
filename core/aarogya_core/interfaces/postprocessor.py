@@ -13,5 +13,4 @@ class Postprocessor(Protocol):
 
     engine_id: str
 
-    def postprocess(self, result: OCRResult) -> OCRResult:
-        ...
+    def postprocess(self, result: OCRResult) -> OCRResult: ...

@@ -13,5 +13,4 @@ class MedicalParser(Protocol):
 
     engine_id: str
 
-    def parse(self, result: OCRResult) -> dict[str, Any]:
-        ...
+    def parse(self, result: OCRResult) -> dict[str, Any]: ...

@@ -30,7 +30,17 @@ export const modelListResponseSchema = z.object({
   message: z.string().optional(),
 });
 
+export const reportListResponseSchema = z.object({
+  reports: z.array(z.object({ report_id: z.string(), path: z.string() })),
+});
+
+export const benchmarkListResponseSchema = z.object({
+  suites: z.array(z.object({ suite: z.string(), status: z.string() })),
+});
+
 export type HealthResponse = z.infer<typeof healthResponseSchema>;
 export type VersionResponse = z.infer<typeof versionResponseSchema>;
 export type PlaceholderResponse = z.infer<typeof placeholderResponseSchema>;
 export type ModelListResponse = z.infer<typeof modelListResponseSchema>;
+export type ReportListResponse = z.infer<typeof reportListResponseSchema>;
+export type BenchmarkListResponse = z.infer<typeof benchmarkListResponseSchema>;

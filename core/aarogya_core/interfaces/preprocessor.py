@@ -11,5 +11,4 @@ class Preprocessor(Protocol):
 
     engine_id: str
 
-    def preprocess(self, image: Any) -> Any:
-        ...
+    def preprocess(self, image: Any) -> Any: ...

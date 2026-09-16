@@ -1,5 +1,12 @@
-# Example evaluation config — not wired yet
-engine_id: stub
+# Evaluation config — CER primary (ADR-0005)
+metrics:
+  - cer
+  - wer
+  - exact_match
+  - normalized_cer
+primary_metric: cer
+normalization: null  # per-metric defaults
 dataset_id: DATASET-00001
-split: test
-metrics: []
+dataset_version: v1
+pipeline_id: PIPELINE-00001
+collect_failures: true

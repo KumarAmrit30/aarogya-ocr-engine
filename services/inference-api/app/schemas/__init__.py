@@ -1,7 +1,14 @@
 """HTTP DTOs — thin wrappers over core types."""
 
-from aarogya_core.types.ocr import OCRRequest, OCRResult
 from pydantic import BaseModel, Field
+
+from aarogya_core.types.evaluation import (
+    EvaluationConfig,
+    EvaluationReport,
+    GroundTruth,
+    Prediction,
+)
+from aarogya_core.types.ocr import OCRRequest, OCRResult
 
 
 class HealthResponse(BaseModel):
@@ -40,20 +47,32 @@ class TrainRequest(BaseModel):
 
 
 class EvaluateRequest(BaseModel):
-    config_ref: str | None = None
-    model_id: str | None = None
-    dataset_id: str | None = None
+    """GT/prediction pairs for the evaluation engine (no OCR)."""
+
+    references: list[GroundTruth] = Field(default_factory=list)
+    predictions: list[Prediction] = Field(default_factory=list)
+    config: EvaluationConfig | None = None
 
 
-# Re-export core OCR types for OpenAPI
+class ReportListResponse(BaseModel):
+    reports: list[dict[str, str]] = Field(default_factory=list)
+
+
+class BenchmarkListResponse(BaseModel):
+    suites: list[dict[str, str]] = Field(default_factory=list)
+
+
 __all__ = [
+    "BenchmarkListResponse",
     "EvaluateRequest",
+    "EvaluationReport",
     "HealthResponse",
     "ModelInfo",
     "ModelListResponse",
     "OCRRequest",
     "OCRResult",
     "PlaceholderResponse",
+    "ReportListResponse",
     "TrainRequest",
     "VersionResponse",
 ]

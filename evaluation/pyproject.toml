@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aarogya-evaluation"
+version = "0.1.0"
+description = "Model-agnostic Research Evaluation Engine for Aarogya"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "aarogya-core",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+  "pytest-cov>=6.0.0",
+  "ruff>=0.8.0",
+  "mypy>=1.13.0",
+  "black>=24.10.0",
+  "isort>=5.13.2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["aarogya_evaluation"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["aarogya_core", "aarogya_evaluation", "aarogya_benchmarks", "app"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["aarogya_core", "aarogya_evaluation", "aarogya_benchmarks", "app"]
+
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -12,5 +12,6 @@ from aarogya_core.types.ids import DatasetId
 class DatasetLoader(Protocol):
     """Load samples from a registered dataset."""
 
-    def load(self, dataset_id: DatasetId, split: str | None = None) -> Iterator[Any]:
-        ...
+    def load(
+        self, dataset_id: DatasetId, split: str | None = None
+    ) -> Iterator[Any]: ...

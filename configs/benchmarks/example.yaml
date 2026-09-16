@@ -1,0 +1,4 @@
+# Example benchmark config — not wired yet
+suite: handwritten
+engines: [stub]
+dataset_ids: []

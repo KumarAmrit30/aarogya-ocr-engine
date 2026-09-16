@@ -1,0 +1,5 @@
+# Example evaluation config — not wired yet
+engine_id: stub
+dataset_id: DATASET-00001
+split: test
+metrics: []

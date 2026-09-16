@@ -1,0 +1,9 @@
+# Example engine config (stub pipeline)
+engine_id: stub
+schema_version: "1.0"
+# steps:
+#   - preprocess
+#   - detect
+#   - recognize
+#   - reading_order
+#   - postprocess

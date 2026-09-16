@@ -1,0 +1,75 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Next.js / Turbo
+.next/
+.turbo/
+out/
+
+# Env & secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Python tooling
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+.dmypy.json
+
+# Data & artifacts (keep structure via .gitkeep / README)
+datasets/raw/**
+!datasets/raw/.gitkeep
+datasets/processed/**
+!datasets/processed/.gitkeep
+*.pt
+*.pth
+*.onnx
+*.pdparams
+*.ckpt
+*.safetensors
+weights/
+checkpoints/
+
+# Lab scratch (keep README)
+lab/scratch/**
+!lab/scratch/.gitkeep
+!lab/scratch/README.md
+lab/playground/**
+!lab/playground/.gitkeep
+!lab/playground/README.md
+
+# Experiment / benchmark large outputs
+registry/experiments/**/artifacts/
+benchmarks/**/results/
+evaluation/reports/**
+!evaluation/reports/.gitkeep
+!evaluation/reports/README.md
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db

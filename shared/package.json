@@ -1,0 +1,19 @@
+{
+  "name": "@aarogya/shared",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "lint": "echo 'shared: no lint yet'",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "clean": "echo 'shared: clean noop'"
+  },
+  "dependencies": {
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

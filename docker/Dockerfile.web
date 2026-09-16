@@ -1,0 +1,19 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN corepack enable && corepack prepare pnpm@9.15.0 --activate
+
+COPY package.json pnpm-workspace.yaml turbo.json ./
+COPY apps/web/package.json ./apps/web/
+COPY shared/package.json ./shared/
+
+RUN pnpm install --filter @aarogya/web...
+
+COPY apps/web ./apps/web
+COPY shared ./shared
+
+WORKDIR /app/apps/web
+EXPOSE 3000
+
+CMD ["pnpm", "dev", "--hostname", "0.0.0.0"]

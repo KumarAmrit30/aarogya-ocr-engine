@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aarogya-inference-api"
+version = "0.1.0"
+description = "Thin FastAPI edge over the Aarogya Research Core"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "aarogya-core",
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+  "python-multipart>=0.0.17",
+  "pydantic-settings>=2.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "black>=24.10.0",
+  "httpx>=0.28.0",
+  "isort>=5.13.2",
+  "mypy>=1.13.0",
+  "pytest>=8.3.0",
+  "ruff>=0.8.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.uv.sources]
+aarogya-core = { path = "../../core", editable = true }
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+plugins = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
